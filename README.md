@@ -71,6 +71,67 @@ The gdrive links are [gdrive-link1](https://drive.google.com/drive/folders/1NYuo
     - [appleDFN5B-CLIP-ViT-H-14.bin](https://huggingface.co/apple/DFN5B-CLIP-ViT-H-14/blob/main/open_clip_pytorch_model.bin)
       - For models from huggingface.co, you should rename them as the shown names.
 
+Full folder Structure
+```
+CLIP4STR/
+├── bench.py
+├── commands.md
+├── configs
+│   ├── bench.yaml
+│   ├── charset
+│   ├── dataset
+│   ├── experiment
+│   ├── main.yaml
+│   ├── model
+│   ├── tune_plus.yaml
+│   └── tune.yaml
+├── data -> /DATA1/ocrteam/anik/splitonBSTD/BSTD_lmdb/bengali/
+├── hubconf.py
+├── LICENSE
+├── misc
+│   ├── overall.png
+│   └── test_image
+├── pretrained
+│   ├── CLIP-ViT-B-16-DataComp.XL-s13B-b90K.bin
+│   ├── CLIP-ViT-H-14-laion2B-s32B-b79K.bin
+│   └── ViT-B-16.pt
+├── README.md
+├── read.py
+├── requirements.txt
+├── scripts
+│   ├── parseq.sh
+│   ├── read.sh
+│   ├── str_adapter.sh
+│   ├── test_model_load.py
+│   ├── test.sh
+│   ├── vl4str_base.sh
+│   ├── vl4str_huge.sh
+│   └── vl4str_large.sh
+├── strhub
+│   ├── clip
+│   ├── data
+│   ├── dist_utils.py
+│   ├── __init__.py
+│   ├── models
+│   └── __pycache__
+├── test.py
+├── tools
+│   ├── art_converter.py
+│   ├── case_sensitive_str_datasets_converter.py
+│   ├── coco_2_converter.py
+│   ├── coco_text_converter.py
+│   ├── create_lmdb_dataset.py
+│   ├── filter_lmdb.py
+│   ├── lsvt_converter.py
+│   ├── mlt19_converter.py
+│   ├── openvino_converter.py
+│   ├── test_abinet_lm_acc.py
+│   └── textocr_converter.py
+├── train.py
+└── tune.py
+```
+
+
 Generally, directories are organized as follows:
 ```
 ${ABSOLUTE_ROOT}
