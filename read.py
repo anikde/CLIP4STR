@@ -27,7 +27,7 @@ from strhub.models.utils import load_from_checkpoint, parse_model_args
 @torch.inference_mode()
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('checkpoint', help="Model checkpoint (or 'pretrained=<model_id>')")
+    parser.add_argument('--checkpoint', help="Model checkpoint (or 'pretrained=<model_id>')")
     parser.add_argument('--images_path', type=str, help='Images to read')
     parser.add_argument('--device', default='cuda')
     args, unknown = parser.parse_known_args()

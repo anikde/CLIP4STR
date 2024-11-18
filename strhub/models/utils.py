@@ -6,6 +6,7 @@ from torch import nn
 
 import yaml
 from torchvision.ops.misc import FrozenBatchNorm2d
+import os
 
 
 class InvalidModelError(RuntimeError):
@@ -105,6 +106,8 @@ def load_from_checkpoint(checkpoint_path: str, **kwargs):
     #     model = ModelClass.load_from_checkpoint(checkpoint_path, **kwargs)
     try:
         ModelClass, _ = _get_model_class(checkpoint_path)
+        print(f"Checkpoint_path: {checkpoint_path}")
+        print(f"exists path:{os.path.exists(checkpoint_path)}")
         model = ModelClass.load_from_checkpoint(checkpoint_path, **kwargs)
     except:
         ModelClass, experiment = _get_model_class(checkpoint_path)

@@ -135,7 +135,7 @@ def main():
         ned = 0
         confidence = 0
         label_length = 0
-        for imgs, labels in tqdm(iter(dataloader), desc=f'{name:>{max_width}}'):
+        for imgs, labels in iter(dataloader):
             res = model.test_step((imgs.to(model.device), labels), -1,
                                     clip_model_path=args.clip_model_path,
                                     clip_refine=args.clip_refine,

@@ -25,7 +25,7 @@ from .modules import LadderSideAdapter, LinearLadderSideAdapter, LadderSideAdapt
 
 
 # an alternative choice when the input argument is not valid 
-CLIP_PATH = '/PUT/YOUR/PATH/HERE/pretrained/clip'
+CLIP_PATH = '/DATA1/ocrteam/anik/git/CLIP4STR/ViT-B-16.pt'
 
 
 class STRAdapter(CrossEntropySystem):

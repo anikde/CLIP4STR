@@ -31,6 +31,10 @@ from strhub.data.module import SceneTextDataModule
 from strhub.models.base import BaseSystem
 from strhub.models.utils import create_model
 from strhub.dist_utils import copy_remote, is_main_process
+from tqdm import tqdm
+
+# import torch
+torch.set_float32_matmul_precision('medium')  # or 'high'
 
 
 @hydra.main(config_path='configs', config_name='main', version_base='1.2')
@@ -100,13 +104,16 @@ def main(config: DictConfig):
     trainer.fit(model, datamodule=datamodule, ckpt_path=config.ckpt_path)
 
     # copy data and perform test
-    torch.distributed.barrier()
+    if gpus>1:
+        torch.distributed.barrier()
     if is_main_process():
         copy_remote(cwd, config.data.output_url)
-        test_call(cwd, config.data.root_dir, config.model.code_path)
+        # test_call(cwd, config.data.root_dir, config.model.code_path)
 
-    torch.distributed.barrier()
-    torch.distributed.destroy_process_group()
+        
+    if gpus>1:
+        torch.distributed.barrier()
+        torch.distributed.destroy_process_group()
 
 
 @rank_zero_only
